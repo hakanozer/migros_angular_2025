@@ -16,8 +16,10 @@
               <input [(ngModel)]="remember" name="remember" type="checkbox" class="form-check-input" id="exampleCheck1">
               <label class="form-check-label" for="exampleCheck1">Remember me</label>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <a [routerLink]="[ '/register' ]" class="btn btn-secondary" >Register</a>
+            <div class="d-flex justify-content-between">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <a [routerLink]="[ '/register' ]" class="btn btn-secondary" >Register</a>
+            </div>
           </form>
         </div>
     <div class="col-sm-4"></div>
