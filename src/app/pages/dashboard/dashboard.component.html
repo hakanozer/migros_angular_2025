@@ -1,1 +1,19 @@
-<p>dashboard works!</p>
+<h2>Products</h2>
+
+@if ( proArr.length > 0 ) {
+    <div class="row">
+        @for (item of proArr; track $index) {
+            <div class="col-sm-6 col-md-6 col-lg-4 mb-2">
+                <div class="card">
+                    <img src={{item.images[0]}} class="card-img-top" alt={{item.title}} />
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.title }}</h5>
+                        <p class="card-text">{{ item.category }}</p>
+                        <p class="card-text">{{ item.price }}₺</p>
+                        <a [routerLink]="[ '/productDetail', item.id ]" class="btn btn-primary">Detail</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
