@@ -19,11 +19,15 @@ export class LoginComponent {
 
   constructor( private api: ApiService, private route: Router ) { 
     // nesne hazırlığı yapılması için uygun yer
-    console.log('constructor - 1')
+    //console.log('constructor - 1')
+    const token = localStorage.getItem( 'token' )
+    if ( token ) {
+      this.route.navigate(['/dashboard'])
+    }
   }
 
   ngOnInit(): void {
-    console.log('ngOnInit - 2')
+    //console.log('ngOnInit - 2')
     setTimeout(() => {
       //this.email = 'ali@example.com'
     }, 5000);
@@ -44,9 +48,9 @@ export class LoginComponent {
           // 1. yöntem
           // window.location.href = '/dashboard'
           // 2. yöntem
-          // window.location.replace('/dashboard')
+          window.location.replace('/dashboard')
           // 3. yöntem
-          this.route.navigate(['/dashboard'])
+          // this.route.navigate(['/dashboard'])
         },
         error: (err: any) => { 
           alert(err.error.message)

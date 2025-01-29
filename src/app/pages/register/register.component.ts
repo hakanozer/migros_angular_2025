@@ -9,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
+  constructor() {
+    const token = localStorage.getItem( 'token' )
+    if ( token ) {
+      window.location.replace('/dashboard')
+    }
+  }
+
 }
