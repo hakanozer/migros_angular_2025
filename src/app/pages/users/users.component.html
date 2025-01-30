@@ -1,0 +1,66 @@
+<h2>Users</h2>
+
+@if (customers.length > 0) {
+    <div class="table-responsive">
+    <table class="table table-hover">
+    <thead>
+        <tr>
+        <th scope="col" style="width: 3%;">ID</th>
+        <th scope="col">Profile</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">City</th>
+        </tr>
+    </thead>
+    <tbody>
+    @for (item of customers; track $index) {
+        <tr (click)="fncSelectCustomer(item)" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal" >
+            <th>{{ item.id }}</th>
+            <td> <img src={{item.profile}} class="img-thumbnail" width="80" /> </td>
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.phone}}</td>
+            <td>{{item.address.city}}</td>
+        </tr>
+    }
+    </tbody>
+    </table>
+    </div>
+
+    @if (selectCustomer) {
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">{{selectCustomer.name}}</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex justify-content-center">
+                  <img src={{selectCustomer.profile}} class="img-thumbnail rounded-circle" />
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4">
+                      <p class="fs-6 fw-bold">Name:</p>
+                      <p class="fs-6 fw-bold">User Name:</p>
+                      <p class="fs-6 fw-bold">Email:</p>
+                      <p class="fs-6 fw-bold">Password:</p>
+                    </div>
+                    <div class="col-8">
+                      <p class="fs-6">{{selectCustomer.name}}</p>
+                      <p class="fs-6">{{selectCustomer.username}}</p>
+                      <p class="fs-6">{{selectCustomer.email}}</p>
+                      <p class="fs-6">{{selectCustomer.password}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+
+}

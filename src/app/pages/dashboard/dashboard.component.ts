@@ -22,7 +22,7 @@ export class DashboardComponent {
   allProduct( page: number, per_page: number ) {
     this.api.productService( page, per_page ).subscribe({
       next: (res) => {
-        console.log(res.data)
+        //console.log(res.data)
         this.proArr = res.data
       },
       error: (err: any) => {

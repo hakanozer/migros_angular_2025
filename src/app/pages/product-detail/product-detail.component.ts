@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api.service';
+import { Product } from '../../models/IProduct';
 
 @Component({
   selector: 'app-product-detail',
@@ -12,6 +13,8 @@ import { ApiService } from '../../services/api.service';
 export class ProductDetailComponent {
 
   pid = ''
+  item: Product | null = null
+  bigImage = ''
 
   constructor( private route: ActivatedRoute, private api: ApiService ) {
       const params = this.route.paramMap
@@ -27,12 +30,17 @@ export class ProductDetailComponent {
     this.api.singleProductService( this.pid ).subscribe({
       next: (res) => {
         const item = res.data
-        console.log(item)
+        this.item = item
+        this.bigImage = item.images[0]
       },
       error: (err: any) => {
         
       }
     })
+  }
+
+  setBigImage( img: string ) {
+    this.bigImage = img
   }
 
 }
