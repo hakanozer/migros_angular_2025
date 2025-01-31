@@ -3,6 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { emailValid } from '../../utils/util';
 import { ApiService } from '../../services/api.service';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-login',
@@ -17,9 +18,10 @@ export class LoginComponent {
   password = '123456'
   remember = true
 
-  constructor( private api: ApiService, private route: Router ) { 
+  constructor( private api: ApiService, private route: Router, private seo: SeoService ) { 
     // nesne hazırlığı yapılması için uygun yer
     //console.log('constructor - 1')
+    this.seo.setSeo( 'User Login', 'User Login Detail' )
     const token = localStorage.getItem( 'token' )
     if ( token ) {
       this.route.navigate(['/dashboard'])

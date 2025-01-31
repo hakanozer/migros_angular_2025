@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,8 @@ import { Component } from '@angular/core';
 })
 export class RegisterComponent {
 
-  constructor() {
+  constructor( private seo: SeoService ) {
+    this.seo.setSeo( 'User Register', 'Register Detail' )
     const token = localStorage.getItem( 'token' )
     if ( token ) {
       window.location.replace('/dashboard')

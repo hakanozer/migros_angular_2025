@@ -2,8 +2,8 @@
    
     <div class="row">
         <div class="col-sm-6">
-            <h3>{{ item.title }}</h3>
-            <h4><span class="badge text-bg-primary">{{ item.price }}₺</span></h4>
+            <div appPtitle [title]="item.title"></div>
+            <h4><span class="badge text-bg-primary">{{ item.price | price }}</span></h4>
             @for (tag of item.tags; track $index) {
                 <span class="badge text-bg-secondary fs-6 me-1">{{ tag }}</span>
             }

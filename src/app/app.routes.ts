@@ -4,6 +4,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { UsersComponent } from './pages/users/users.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 
 export const routes: Routes = [
@@ -26,5 +27,9 @@ export const routes: Routes = [
     {
         path: 'users',
         component: UsersComponent
+    },
+    {
+        path: '**',
+        component: NotfoundComponent
     }
 ];
